@@ -1,4 +1,4 @@
-package com.ssafy.sandbox.crud.dto;
+package com.ssafy.sandbox.crud.dto.read;
 
 import com.ssafy.sandbox.crud.domain.Todo;
 import lombok.Getter;

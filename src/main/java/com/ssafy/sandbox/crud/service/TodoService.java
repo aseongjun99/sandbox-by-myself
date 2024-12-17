@@ -1,6 +1,6 @@
 package com.ssafy.sandbox.crud.service;
 
-import com.ssafy.sandbox.crud.dto.TodoResponse;
+import com.ssafy.sandbox.crud.dto.read.TodoResponse;
 import org.springframework.stereotype.Service;
 
 @Service
