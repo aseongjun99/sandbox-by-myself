@@ -1,9 +1,12 @@
 package com.ssafy.sandbox.crud.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 public class Todo {
 
@@ -15,5 +18,5 @@ public class Todo {
     private String content;
 
     @Column
-    private Boolean completed;
+    private Boolean completed = false;
 }

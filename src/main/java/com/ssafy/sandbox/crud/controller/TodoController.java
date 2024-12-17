@@ -1,5 +1,6 @@
 package com.ssafy.sandbox.crud.controller;
 
+import com.ssafy.sandbox.crud.dto.create.CreateTodoRequest;
 import com.ssafy.sandbox.crud.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,10 @@ public class TodoController {
     @GetMapping
     public ResponseEntity<?> getTodos() {
         return ResponseEntity.ok().body(todoService.getTodos());
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createTodo(@RequestBody CreateTodoRequest createTodoRequest) {
+        return ResponseEntity.ok().body(todoService.createTodo(createTodoRequest));
     }
 }
