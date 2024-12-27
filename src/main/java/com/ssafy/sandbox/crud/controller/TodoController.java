@@ -29,4 +29,9 @@ public class TodoController {
     public void updateTodo(@PathVariable int todoId) {
         todoService.updateTodo(todoId);
     }
+
+    @DeleteMapping("/{todoId}")
+    public void deleteTodo(@PathVariable int todoId) {
+
+    }
 }

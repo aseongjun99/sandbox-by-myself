@@ -37,4 +37,9 @@ public class TodoService {
         Todo todo = todoRepository.findTodoById(todoId);
         todo.setCompleted(!todo.getCompleted());
     }
+
+    @Transactional
+    public void deleteTodo(int todoId) {
+        todoRepository.deleteById(todoId);
+    }
 }
