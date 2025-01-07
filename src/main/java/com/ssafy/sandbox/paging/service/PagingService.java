@@ -17,6 +17,15 @@ public class PagingService {
 
     private final PagingRepository pagingRepository;
 
+    public OffsetResponse offsetPaging(int size, int page) {
+        int offset = page * size;
+        List<Article> articles = pagingRepository.findAllByOffset(offset, size);
+        OffsetResponse offsetResponse = new OffsetResponse();
+        offsetResponse.setArticles(articles);
+        offsetResponse.setTotalPage(articles.size());
+        return offsetResponse;
+    }
+
     @Transactional
     public void makeArticles(DataRequest articles) {
         List<Article> articleList = articles.getArticles();

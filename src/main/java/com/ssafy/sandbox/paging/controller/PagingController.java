@@ -18,6 +18,11 @@ public class PagingController {
 
     private final PagingService pagingService;
 
+    @GetMapping("/paging/offset")
+    public ResponseEntity<?> offsetPaging(@RequestParam(value = "size") int size, @RequestParam(value = "page") int page) {
+        return ResponseEntity.ok().body(pagingService.offsetPaging(size, page));
+    }
+
     @PostMapping("/make")
     public void makeArticles(@RequestBody DataRequest articles) {
         System.out.println(articles);
