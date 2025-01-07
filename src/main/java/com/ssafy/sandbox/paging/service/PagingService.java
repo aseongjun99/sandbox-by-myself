@@ -1,6 +1,7 @@
 package com.ssafy.sandbox.paging.service;
 
 import com.ssafy.sandbox.paging.domain.Article;
+import com.ssafy.sandbox.paging.dto.CursorResponse;
 import com.ssafy.sandbox.paging.dto.DataRequest;
 import com.ssafy.sandbox.paging.dto.OffsetResponse;
 import com.ssafy.sandbox.paging.repository.PagingRepository;
@@ -24,6 +25,17 @@ public class PagingService {
         offsetResponse.setArticles(articles);
         offsetResponse.setTotalPage(articles.size());
         return offsetResponse;
+    }
+
+    public CursorResponse cursorPaging(int size, int cursorId) {
+        List<Article> articles = pagingRepository.findAllByCursor(cursorId, size);
+        if (articles.isEmpty()) {
+            return new CursorResponse();
+        }
+        CursorResponse cursorResponse = new CursorResponse();
+        cursorResponse.setArticles(articles);
+        cursorResponse.setLastId(articles.get(articles.size() - 1).getId());
+        return cursorResponse;
     }
 
     @Transactional

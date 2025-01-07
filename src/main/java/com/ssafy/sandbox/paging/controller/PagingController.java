@@ -23,6 +23,11 @@ public class PagingController {
         return ResponseEntity.ok().body(pagingService.offsetPaging(size, page));
     }
 
+    @GetMapping("/paging/cursor")
+    public ResponseEntity<?> cursorPaging(@RequestParam(value = "size") int size, @RequestParam(value = "cursorId") int cursorId) {
+        return ResponseEntity.ok().body(pagingService.cursorPaging(size, cursorId));
+    }
+
     @PostMapping("/make")
     public void makeArticles(@RequestBody DataRequest articles) {
         System.out.println(articles);
