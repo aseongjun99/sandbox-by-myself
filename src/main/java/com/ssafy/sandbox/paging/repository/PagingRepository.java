@@ -11,4 +11,7 @@ public interface PagingRepository extends JpaRepository<Article, Integer> {
 
     @Query(value = "SELECT * FROM article LIMIT :offset , :limit", nativeQuery = true)
     List<Article> findAllByOffset(@Param("offset") Integer offset, @Param("limit") Integer limit);
+
+    @Query(value = "SELECT * FROM article WHERE id > :cursor and id < (:cursor + :limit)", nativeQuery = true)
+    List<Article> findAllByCursor(@Param("cursor") int cursor, @Param("limit") int limit);
 }
